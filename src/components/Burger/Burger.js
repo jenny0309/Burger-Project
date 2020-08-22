@@ -1,9 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import classes from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const burger = (props) => {
+    console.log(props); // withRouter hoc makes props also contain match and history
     // 1. key(string), value(integer)
     // 2. map() creates empty array which the number of elements is the above value
     // 3. the second map() gets index of the empty array and returns the BurgerIngredient tag with key
@@ -26,10 +28,10 @@ const burger = (props) => {
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top" />
-            {transformedIngredients}
+                {transformedIngredients}
             <BurgerIngredient type="bread-bottom" />
         </div>
     );
 };
 
-export default burger;
+export default withRouter(burger);
